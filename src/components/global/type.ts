@@ -1,3 +1,1 @@
-export type OverlayClose = {
-  close: () => void;
-};
+export type OverlayClose = () => void;
