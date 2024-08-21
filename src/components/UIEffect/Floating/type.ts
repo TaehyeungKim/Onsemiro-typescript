@@ -1,4 +1,4 @@
-import { OverlayClose } from "@/components/global/type";
+import { BaseAlertLayoutProps } from "@/layout/Alert/type";
 
 export interface RecursiveFloatingContainerProps
   extends React.ComponentPropsWithoutRef<"div"> {
@@ -13,15 +13,7 @@ export interface FloatAndShrinkElementProps
   condition: unknown;
 }
 
-type FloatAndShrinkOverlayChild = React.ComponentPropsWithoutRef<"div"> &
-  OverlayClose;
-
-export interface FloatAndShrinkOverlayProps
-  extends React.ComponentPropsWithoutRef<"div">,
-    OverlayClose {
-  Child: ({
-    close,
-    children,
-    ...props
-  }: FloatAndShrinkOverlayChild) => JSX.Element;
-}
+export type FloatAndShrinkOverlayProps<T extends BaseAlertLayoutProps> = T &
+  React.ComponentPropsWithoutRef<"div"> & {
+    Child: ({ close, children, ...props }: T) => JSX.Element;
+  };

@@ -1,7 +1,5 @@
-import { OverlayClose } from "@/components/global/type";
-import { NoUserExistsAlertLayoutProps } from "./type";
+import { NoUserExistsAlertLayoutProps, ConfirmAlertLayoutProps } from "./type";
 import { MainCustomButton } from "@/components/CustomButton";
-import { FloatAndShrinkOverlay } from "@/components/UIEffect/Floating";
 
 function AlertFrame({ children }: React.ComponentPropsWithoutRef<"div">) {
   return (
@@ -11,7 +9,28 @@ function AlertFrame({ children }: React.ComponentPropsWithoutRef<"div">) {
   );
 }
 
-function NoUserExistsAlertLayout({ close }: NoUserExistsAlertLayoutProps) {
+export function ConfirmAlertLayout({
+  children,
+  confirm,
+  close,
+}: ConfirmAlertLayoutProps) {
+  return (
+    <AlertFrame>
+      {children}
+      <div className="flex justify-center mt-6 gap-5">
+        <MainCustomButton onClick={confirm}>확인</MainCustomButton>
+        <MainCustomButton className="bg-white !text-black" onClick={close}>
+          취소
+        </MainCustomButton>
+      </div>
+    </AlertFrame>
+  );
+}
+
+export function NoUserExistsAlertLayout({
+  close,
+  ...props
+}: NoUserExistsAlertLayoutProps) {
   return (
     <AlertFrame>
       <div className="flex flex-col gap-4">
@@ -27,11 +46,5 @@ function NoUserExistsAlertLayout({ close }: NoUserExistsAlertLayoutProps) {
         </MainCustomButton>
       </div>
     </AlertFrame>
-  );
-}
-
-export function FloatingNoUserExistsAlertLayout({ close }: OverlayClose) {
-  return (
-    <FloatAndShrinkOverlay Child={NoUserExistsAlertLayout} close={close} />
   );
 }

@@ -1,6 +1,33 @@
-import { OverlayClose } from "@/components/global/type";
-import { FloatingNoUserExistsAlertLayout } from "@/layout/Alert";
+import { NoUserExistsAlertLayout, ConfirmAlertLayout } from "@/layout/Alert";
 
-export function NoUserExistsAlert({ close }: OverlayClose) {
-  return <FloatingNoUserExistsAlertLayout close={close} />;
+import {
+  NoUserExistsAlertLayoutProps,
+  ConfirmAlertLayoutProps,
+} from "@/layout/Alert/type";
+
+import { FloatAndShrinkOverlay } from "../UIEffect/Floating";
+
+export function NoUserExistsAlert({ close }: NoUserExistsAlertLayoutProps) {
+  return (
+    <FloatAndShrinkOverlay<NoUserExistsAlertLayoutProps>
+      Child={NoUserExistsAlertLayout}
+      close={close}
+    />
+  );
+}
+
+export function SignUpCancleAlert({
+  children,
+  close,
+  ...props
+}: ConfirmAlertLayoutProps) {
+  return (
+    <FloatAndShrinkOverlay<ConfirmAlertLayoutProps>
+      Child={ConfirmAlertLayout}
+      close={close}
+      {...props}
+    >
+      {children}
+    </FloatAndShrinkOverlay>
+  );
 }

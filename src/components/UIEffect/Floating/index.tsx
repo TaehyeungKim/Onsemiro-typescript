@@ -11,6 +11,9 @@ import {
   FloatAndShrinkElementProps,
   FloatAndShrinkOverlayProps,
 } from "./type";
+import { BaseAlertLayoutProps } from "@/layout/Alert/type";
+import { NoUserExistsAlert } from "@/components/Overlay";
+import { NoUserExistsAlertLayout } from "@/layout/Alert";
 
 // import "./index.css";
 
@@ -113,12 +116,12 @@ export function FloatAndShrinkElement({
   );
 }
 
-export function FloatAndShrinkOverlay({
+export function FloatAndShrinkOverlay<T extends BaseAlertLayoutProps>({
   Child,
   close,
   children,
   ...props
-}: FloatAndShrinkOverlayProps) {
+}: FloatAndShrinkOverlayProps<T>) {
   const container = useRef<HTMLDivElement>(null);
 
   const [shrink, setShrink] = useState(false);
@@ -146,7 +149,12 @@ export function FloatAndShrinkOverlay({
     <div className="fixed top-0 left-0 w-screen h-screen bg-background-darker z-40 flex items-center justify-center bg-opacity-90">
       <div ref={container} className={"floating"}>
         {
-          <Child close={() => setShrink(true)} {...props}>
+          <Child
+            {...{
+              ...(props as React.ComponentProps<typeof Child>),
+              close: () => setShrink(true),
+            }}
+          >
             {children}
           </Child>
         }
