@@ -69,7 +69,7 @@ function TopButton() {
 function LandingSectionCaption({ src }: { src: string }) {
   return (
     <div className="w-28 mx-auto mt-10 box-border">
-      <img src={src} className="w-full block" />
+      <img src={src} className="w-full block" alt="" />
     </div>
   );
 }
@@ -179,7 +179,7 @@ export default function LandingPage() {
             내게 꼭 맞는 사람? <br /> 미리 알고 만날 수 있어
           </h1>
           <div className="absolute top-0 left-0 w-full h-full opacity-80">
-            <img className="w-full h-full" src={landingImage} />
+            <img className="w-full h-full" src={landingImage} alt="랜딩 배경" />
           </div>
           <footer className="z-30 mb-10 w-full flex flex-col bg-transparent items-center justify-start">
             <MainCustomButton
@@ -207,7 +207,7 @@ export default function LandingPage() {
             서로의 사진은 서로만 확인할 수 있어요!
           </LandingSectionSubTitle>
           <LandingMainSection>
-            <img className="h-[75%]" src={f1_cap} />
+            <img className="h-[75%]" src={f1_cap} alt="프로필 확인 쪽지" />
           </LandingMainSection>
         </div>
         <div className="w-full h-landing-height flex flex-col items-center bg-main">
@@ -223,7 +223,7 @@ export default function LandingPage() {
             배지를 확인하세요!
           </LandingSectionSubTitle>
           <LandingMainSection>
-            <img src={f2_cap} className="w-[72%]" />
+            <img src={f2_cap} className="w-[72%]" alt="인증" />
           </LandingMainSection>
         </div>
         <div className="w-full h-landing-height flex flex-col items-center bg-mint">
@@ -237,7 +237,7 @@ export default function LandingPage() {
             내가 고른 성향의 사람만 보여드려요.
           </LandingSectionSubTitle>
           <LandingMainSection>
-            <img src={f3_cap} className="h-[75%]" />
+            <img src={f3_cap} className="h-[75%]" alt="성향" />
           </LandingMainSection>
         </div>
         <div className="w-full h-landing-height flex flex-col items-center bg-sub">
