@@ -4,7 +4,7 @@ import axios, { AxiosResponse, InternalAxiosRequestConfig } from "axios";
 axios.defaults.baseURL = "/api";
 axios.defaults.withCredentials = true;
 axios.defaults.headers.post["Content-Type"] = "application/json";
-// axios.defaults.headers.common["X-CSRFToken"] =
+axios.defaults.headers.common["X-CSRFToken"] = getCookie("csrftoken");
 
 export const instance = axios.create();
 export const instanceWithToken = axios.create();

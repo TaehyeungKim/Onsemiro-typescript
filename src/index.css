@@ -90,7 +90,7 @@ input[type="range"]::-ms-track {
   }
 }
 
-//signin
+/* signin */
 @keyframes afterLogin {
   0% {
     height: 0;
