@@ -89,3 +89,61 @@ input[type="range"]::-ms-track {
     @apply block h-1/2 bg-white content-[''] aspect-square rounded-full;
   }
 }
+
+//signin
+@keyframes afterLogin {
+  0% {
+    height: 0;
+  }
+  100% {
+    height: 100px;
+  }
+}
+
+@keyframes verificationAppear {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.afterLogin {
+  animation: afterLogin 0.5s ease-in-out forwards;
+}
+
+.verificationAppear {
+  animation: verificationAppear 0.5s ease-in-out forwards;
+}
+
+/* floating */
+@keyframes Floating {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+}
+
+@keyframes Shrinking {
+  0% {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+}
+
+.floating {
+  animation: Floating 0.5s ease-in-out forwards;
+}
+
+.shrinking {
+  animation: Shrinking 0.5s ease-in-out forwards;
+}
