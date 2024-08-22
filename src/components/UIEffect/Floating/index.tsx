@@ -12,8 +12,6 @@ import {
   FloatAndShrinkOverlayProps,
 } from "./type";
 import { BaseAlertLayoutProps } from "@/layout/Alert/type";
-import { NoUserExistsAlert } from "@/components/Overlay";
-import { NoUserExistsAlertLayout } from "@/layout/Alert";
 
 // import "./index.css";
 
