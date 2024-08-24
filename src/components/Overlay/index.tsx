@@ -5,12 +5,15 @@ import {
   ConfirmAlertLayoutProps,
 } from "@/layout/Alert/type";
 
+import { UnivSearchOverlayLayout } from "@/layout/UnivSearch";
+import { UnivSearchOverlayLayoutProps } from "@/layout/UnivSearch/type";
+
 import { FloatAndShrinkOverlay } from "../UIEffect/Floating";
 
 export function NoUserExistsAlert({ close }: NoUserExistsAlertLayoutProps) {
   return (
     <FloatAndShrinkOverlay<NoUserExistsAlertLayoutProps>
-      Child={NoUserExistsAlertLayout}
+      Layout={NoUserExistsAlertLayout}
       close={close}
     />
   );
@@ -23,11 +26,20 @@ export function SignUpCancleAlert({
 }: ConfirmAlertLayoutProps) {
   return (
     <FloatAndShrinkOverlay<ConfirmAlertLayoutProps>
-      Child={ConfirmAlertLayout}
+      Layout={ConfirmAlertLayout}
       close={close}
       {...props}
     >
       {children}
     </FloatAndShrinkOverlay>
+  );
+}
+
+export function UnivSearch({ ...props }: UnivSearchOverlayLayoutProps) {
+  return (
+    <FloatAndShrinkOverlay<UnivSearchOverlayLayoutProps>
+      Layout={UnivSearchOverlayLayout}
+      {...props}
+    />
   );
 }

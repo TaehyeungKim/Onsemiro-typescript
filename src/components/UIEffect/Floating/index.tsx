@@ -10,8 +10,10 @@ import {
   RecursiveFloatingContainerProps,
   FloatAndShrinkElementProps,
   FloatAndShrinkOverlayProps,
+  FloatElementProps,
 } from "./type";
-import { BaseAlertLayoutProps } from "@/layout/Alert/type";
+
+import { OverlayStandardLayoutProps } from "@/layout/base";
 
 // import "./index.css";
 
@@ -19,6 +21,8 @@ export function RecursiveFloatingContainer({
   children,
   floating,
   initial = "hidden",
+  floatMode = "animationstart",
+  listener,
   ...props
 }: RecursiveFloatingContainerProps) {
   const container = useRef<HTMLDivElement>(null);
@@ -38,9 +42,10 @@ export function RecursiveFloatingContainer({
     if (firstElement) {
       recursiveAttach(firstElement, (element: Element) => {
         element.setAttribute("style", `visibility: ${initial}`);
-        element.addEventListener("animationstart", () => {
+        element.addEventListener(floatMode, () => {
           element.nextElementSibling?.removeAttribute("style");
           element.nextElementSibling?.classList.add(floating);
+          if (!element.nextElementSibling) listener && listener();
         });
       });
     }
@@ -114,8 +119,8 @@ export function FloatAndShrinkElement({
   );
 }
 
-export function FloatAndShrinkOverlay<T extends BaseAlertLayoutProps>({
-  Child,
+export function FloatAndShrinkOverlay<T extends OverlayStandardLayoutProps>({
+  Layout,
   close,
   children,
   ...props
@@ -147,16 +152,29 @@ export function FloatAndShrinkOverlay<T extends BaseAlertLayoutProps>({
     <div className="fixed top-0 left-0 w-screen h-screen bg-background-darker z-40 flex items-center justify-center bg-opacity-90">
       <div ref={container} className={"floating"}>
         {
-          <Child
+          <Layout
             {...{
-              ...(props as React.ComponentProps<typeof Child>),
+              ...(props as React.ComponentProps<typeof Layout>),
               close: () => setShrink(true),
             }}
           >
             {children}
-          </Child>
+          </Layout>
         }
       </div>
     </div>
   );
+}
+
+export function FloatElement({ children, condition }: FloatElementProps) {
+  const [visible, setVisible] = useState(false);
+
+  useEffect(() => {
+    if (condition) setVisible(true);
+    return () => setVisible(false);
+  }, [condition]);
+
+  if (!visible) return <></>;
+
+  return <div className={`floating`}>{children}</div>;
 }
