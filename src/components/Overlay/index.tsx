@@ -1,8 +1,13 @@
-import { NoUserExistsAlertLayout, ConfirmAlertLayout } from "@/layout/Alert";
+import {
+  NoUserExistsAlertLayout,
+  ConfirmAlertLayout,
+  VerifyErrorAlertLayout,
+} from "@/layout/Alert";
 
 import {
   NoUserExistsAlertLayoutProps,
   ConfirmAlertLayoutProps,
+  VerifyErrorALertLayoutProps,
 } from "@/layout/Alert/type";
 
 import { UnivSearchOverlayLayout } from "@/layout/UnivSearch";
@@ -40,6 +45,15 @@ export function UnivSearch({ ...props }: UnivSearchOverlayLayoutProps) {
     <FloatAndShrinkOverlay<UnivSearchOverlayLayoutProps>
       Layout={UnivSearchOverlayLayout}
       {...props}
+    />
+  );
+}
+
+export function VerifyErrorAlert({ close }: VerifyErrorALertLayoutProps) {
+  return (
+    <FloatAndShrinkOverlay<VerifyErrorALertLayoutProps>
+      Layout={VerifyErrorAlertLayout}
+      close={close}
     />
   );
 }

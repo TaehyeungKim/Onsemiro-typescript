@@ -1,6 +1,6 @@
 import { useCallback, useState } from "react";
 import ProgressBar from "@/components/ProgressBar";
-import { SignUpCancleAlert } from "@/components/Overlay";
+import { SignUpCancleAlert, VerifyErrorAlert } from "@/components/Overlay";
 import { useNavigate } from "react-router-dom";
 import Icon from "@/components/Icon";
 import { Back, Close } from "@/assets/buttons/export";
@@ -74,6 +74,11 @@ export default function SignUpPage() {
             <h4 className="mt-2 font-bold">정말 회원가입을 멈추시겠습니까?</h4>
           </>
         </SignUpCancleAlert>
+      )}
+      {codeInvalidAlertVisible && (
+        <VerifyErrorAlert
+          close={() => setCodeInvalidAlertVisible(false)}
+        ></VerifyErrorAlert>
       )}
       <header className="p-2">
         <nav className="flex flex-row justify-between mb-3">

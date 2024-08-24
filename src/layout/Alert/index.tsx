@@ -1,5 +1,11 @@
-import { NoUserExistsAlertLayoutProps, ConfirmAlertLayoutProps } from "./type";
+import Icon from "@/components/Icon";
+import {
+  NoUserExistsAlertLayoutProps,
+  ConfirmAlertLayoutProps,
+  VerifyErrorALertLayoutProps,
+} from "./type";
 import { MainCustomButton } from "@/components/CustomButton";
+import { Lock } from "@/assets/export";
 
 function AlertFrame({ children }: React.ComponentPropsWithoutRef<"div">) {
   return (
@@ -45,6 +51,19 @@ export function NoUserExistsAlertLayout({
           설문하고 회원가입하기
         </MainCustomButton>
       </div>
+    </AlertFrame>
+  );
+}
+
+export function VerifyErrorAlertLayout({ close }: VerifyErrorALertLayoutProps) {
+  return (
+    <AlertFrame>
+      <MainCustomButton onClick={close} className="bg-sub">
+        <div className="flex justify-center items-center">
+          <Icon src={Lock} tag="div" className="w-4 mr-3" />
+          <span className="h-6">인증번호가 다릅니다.</span>
+        </div>
+      </MainCustomButton>
     </AlertFrame>
   );
 }
