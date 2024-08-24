@@ -1,8 +1,15 @@
 import { atom } from "recoil";
+import { SignUpClientStoreData } from "@/routes/Signup/type";
 
-export const signUpState = atom({
+export const signUpState = atom<SignUpClientStoreData>({
   key: "signUp",
-  default: {},
+  default: {
+    univ: "",
+    email: "",
+    phoneVerification: false,
+    schoolVerification: false,
+    verifyCode: "",
+  },
 });
 
 export const idealChoiceVisibleState = atom({
