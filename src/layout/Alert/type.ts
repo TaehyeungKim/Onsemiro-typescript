@@ -1,10 +1,6 @@
-import { OverlayClose } from "@/components/global/type";
+import { OverlayStandardLayoutProps } from "../base";
 
-export interface BaseAlertLayoutProps
-  extends React.ComponentPropsWithoutRef<"div"> {
-  close: OverlayClose;
-  children?: JSX.Element;
-}
+interface BaseAlertLayoutProps extends OverlayStandardLayoutProps {}
 
 export interface NoUserExistsAlertLayoutProps extends BaseAlertLayoutProps {}
 
