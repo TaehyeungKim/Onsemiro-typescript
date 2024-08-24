@@ -11,7 +11,7 @@ export default function Icon<T extends keyof JSX.IntrinsicElements>({
   ...props
 }: IconProps<T>) {
   const image = React.createElement("img", { src });
-  const Icon = React.createElement(tag, props, [image]);
+  const Icon = React.createElement(tag, props, image);
 
   return <>{Icon}</>;
 }
