@@ -6,3 +6,15 @@ export interface CustomTextInputProps
   id: string;
   label?: string;
 }
+
+export type RadioCollection = {
+  main: string;
+  sub?: string;
+};
+
+export interface SelectionRadioGridProps {
+  collection: RadioCollection[];
+  name: string;
+  setter: (value: string) => void;
+  defaultV: string;
+}
