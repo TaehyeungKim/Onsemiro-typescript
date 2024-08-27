@@ -23,4 +23,8 @@ export interface RangeBarProps extends React.ComponentPropsWithoutRef<"input"> {
   setter: (value: string) => void;
   captions?: (string | number)[];
   options?: any;
+  max: number;
+  min: number;
+  step: number;
+  defaultValue: number;
 }

@@ -115,3 +115,65 @@ export function RangeBar({
     </div>
   );
 }
+
+export function ExtendedRangeBar({
+  max,
+  min,
+  step,
+  defaultValue,
+  setter,
+  captions,
+}: RangeBarProps) {
+  return (
+    <>
+      <div className="w-full h-4 mx-auto relative flex items-center mt-14 ">
+        <div className="w-full h-1 flex justify-between shadow-md">
+          {(() => {
+            const arr = [];
+            for (let i = min; i <= max; i += step) {
+              arr.push(
+                <div key={i} className="grow h-full has-[:checked]:z-30 group">
+                  <input
+                    type="radio"
+                    className="peer"
+                    hidden
+                    name="ex-range"
+                    id={`ex-range-${i}`}
+                    value={i}
+                    onChange={(e) => setter(e.target.value)}
+                    // defaultValue={defaultValue}
+                    defaultChecked={i === defaultValue ?? false}
+                  />
+                  <label
+                    htmlFor={`ex-range-${i}`}
+                    className="flex items-center h-full peer-checked:*:after:range-point-selected peer-checked:bg-main bg-white justify-between"
+                  >
+                    <div
+                      className={`flex items-center justify-center group-first:bg-white shadow-md bg-main range-point range-point-left`}
+                    ></div>
+                    <div
+                      className={`flex items-center justify-center group-last:bg-white shadow-md bg-main range-point range-point-right`}
+                    ></div>
+                  </label>
+                </div>
+              );
+            }
+            return arr;
+          })()}
+        </div>
+      </div>
+      <div className="w-full h-1 flex justify-between">
+        <div className=" h-full aspect-square invisible"></div>
+        {captions?.map((c, i) => (
+          <span
+            key={i}
+            className={`h-full flex justify-center aspect-square text-center text-xs`}
+          >
+            {c}
+          </span>
+        ))}
+        <div className="h-full aspect-square invisible"></div>
+      </div>
+    </>
+  );
+}
