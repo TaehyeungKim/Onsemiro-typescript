@@ -502,3 +502,28 @@ export const Bdsm = [
   { main: "SADI" },
   { main: "MASO" },
 ] satisfies RadioCollection[];
+
+export const WeightCollection = [
+  { main: "마른" },
+  { main: "보통" },
+  { main: "통통" },
+  { main: "근육" },
+] satisfies RadioCollection[];
+
+export const AppearanceCollection = [
+  {
+    main: "뚜렷",
+  },
+  {
+    main: "두부",
+  },
+] satisfies RadioCollection[];
+
+export const EyelidCollection = [
+  {
+    main: "유쌍",
+  },
+  {
+    main: "무쌍",
+  },
+] satisfies RadioCollection[];

@@ -85,7 +85,7 @@ input[type="range"]::-ms-track {
   display: none;
 }
 
-//landing
+/* landing */
 .review-star {
   background-clip: text;
   -webkit-background-clip: text;
@@ -154,4 +154,21 @@ input[type="range"]::-ms-track {
 
 .shrinking {
   animation: Shrinking 0.5s ease-in-out forwards;
+}
+
+/* Custom Input */
+.range-point {
+  transform-origin: center;
+  /* h-full aspect-square rounded-full shadow-md */
+  aspect-ratio: 1;
+  border-radius: 50%;
+  height: 100%;
+}
+
+.range-point-left {
+  transform: translateX(-50%) scale(200%);
+}
+
+.range-point-right {
+  transform: translateX(50%) scale(200%);
 }

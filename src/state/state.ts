@@ -15,6 +15,10 @@ export const signUpState = atom<SignUpClientStoreData>({
     age: 0,
     gender_preference: "",
     bdsm: "",
+    height: 0,
+    weight: "",
+    appearance: "",
+    eyelid: "",
   },
 });
 

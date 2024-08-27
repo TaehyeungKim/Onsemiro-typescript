@@ -7,6 +7,10 @@ export type SignUpSubmitData = {
   age: number;
   gender_preference: string;
   bdsm: string;
+  height: number;
+  weight: string;
+  appearance: string;
+  eyelid: string;
 };
 
 export type SignUpClientStoreData = SignUpSubmitData & {

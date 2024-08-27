@@ -5,6 +5,7 @@ import {
   NickName,
   AgeAndGender,
   Sexual,
+  Appearance,
 } from "./contents/export";
 import { RecursiveFloatingContainer } from "@/components/UIEffect/Floating";
 
@@ -64,8 +65,12 @@ export default function SignUpPageContent({
               </ContentFloatContainer>
             );
 
-          // case 5:
-          //   return <Appearance />;
+          case 5:
+            return (
+              <ContentFloatContainer key={5} floatListener={floatListener}>
+                <Appearance />
+              </ContentFloatContainer>
+            );
           // case 6:
           //   return <Character />;
           // case 7:
