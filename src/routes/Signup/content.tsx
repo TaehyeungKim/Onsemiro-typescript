@@ -1,5 +1,5 @@
 import { SignUpPageContentProps } from "./type";
-import { AuthenticateSelf } from "./contents/export";
+import { AuthenticateSelf, KakaoAuth } from "./contents/export";
 import { RecursiveFloatingContainer } from "@/components/UIEffect/Floating";
 
 export default function SignUpPageContent({
@@ -18,8 +18,8 @@ export default function SignUpPageContent({
             switch (level) {
               case 0:
                 return <AuthenticateSelf />;
-              // case 1:
-              //   return <KakaoAuth />;
+              case 1:
+                return <KakaoAuth />;
               // case 2:
               //   return <NickNameInput />;
               // case 3:

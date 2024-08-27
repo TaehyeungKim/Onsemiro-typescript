@@ -37,6 +37,7 @@ export const requestSchoolVerifyCode = async (data: SignUpSchoolVerifData) => {
 //dummy
 export const checkSchoolVerifyCode = async (data: SignUpCheckVerifData) => {
   return new Promise((resolve, reject) => {
-    setTimeout(() => reject(false), 1000);
+    // setTimeout(() => reject(false), 1000);
+    setTimeout(() => resolve(true), 1000);
   });
 };

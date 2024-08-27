@@ -18,7 +18,7 @@ export default function SignUpPage() {
   const TOTAL_LEVEL_COUNT = 14;
 
   const navigate = useNavigate();
-  const [curLevel, setCurLevel] = useState<number>(0);
+  const [curLevel, setCurLevel] = useState<number>(1);
 
   const signUpData = useRecoilValue<SignUpClientStoreData>(signUpState);
 

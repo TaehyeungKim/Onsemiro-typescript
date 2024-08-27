@@ -10,6 +10,10 @@ export const executeOnDataFulfilled = (
       if (data.phoneVerification && data.schoolVerification && data.verifyCode)
         execute();
       break;
+
+    case 1:
+      if (data.kakao_id) execute();
+      break;
     default:
 
     // case 1:
