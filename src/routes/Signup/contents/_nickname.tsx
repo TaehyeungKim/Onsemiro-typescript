@@ -1,5 +1,5 @@
 import { CustomTextInput } from "@/components/CustomInput";
-import { SignUpContentSection } from "./base";
+import { SignUpContentSection } from "./_base";
 
 import { useRecoilState } from "recoil";
 import { signUpState } from "@/state/state";

@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-import { SignUpContentSection, SectionTitle } from "./base";
+import { SignUpContentSection, SectionTitle } from "./_base";
 import Icon from "@/components/Icon";
 import { CheckBL, Search } from "@/assets/buttons/export";
 import { CustomTextInput } from "@/components/CustomInput";

@@ -1,10 +1,9 @@
 import { CustomTextInput } from "@/components/CustomInput";
-import { SignUpContentSection } from "./base";
+import { SignUpContentSection } from "./_base";
 
 import { useRecoilState } from "recoil";
 import { signUpState } from "@/state/state";
 import { howToKakao } from "@/assets/export";
-import { useEffect } from "react";
 
 export default function KakaoAuth() {
   const [signUpData, setSignUpData] = useRecoilState(signUpState);
