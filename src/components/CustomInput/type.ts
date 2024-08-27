@@ -18,3 +18,9 @@ export interface SelectionRadioGridProps {
   setter: (value: string) => void;
   defaultV: string;
 }
+
+export interface RangeBarProps extends React.ComponentPropsWithoutRef<"input"> {
+  setter: (value: string) => void;
+  captions?: (string | number)[];
+  options?: any;
+}
