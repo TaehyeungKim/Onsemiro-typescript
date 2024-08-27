@@ -2,6 +2,7 @@ export type SignUpSubmitData = {
   univ: string;
   email: string;
   kakao_id: string;
+  nickname: string;
 };
 
 export type SignUpClientStoreData = SignUpSubmitData & {

@@ -1,4 +1,4 @@
-import { useCallback, useState } from "react";
+import { useCallback, useState, useLayoutEffect } from "react";
 import ProgressBar from "@/components/ProgressBar";
 import { SignUpCancleAlert, VerifyErrorAlert } from "@/components/Overlay";
 import { useNavigate } from "react-router-dom";
@@ -18,7 +18,7 @@ export default function SignUpPage() {
   const TOTAL_LEVEL_COUNT = 14;
 
   const navigate = useNavigate();
-  const [curLevel, setCurLevel] = useState<number>(1);
+  const [curLevel, setCurLevel] = useState<number>(2);
 
   const signUpData = useRecoilValue<SignUpClientStoreData>(signUpState);
 
@@ -45,8 +45,10 @@ export default function SignUpPage() {
   const [codeInvalidAlertVisible, setCodeInvalidAlertVisible] =
     useState<boolean>(false);
 
-  useEffect(() => {
-    return () => setIsFloatingEnd(false);
+  useLayoutEffect(() => {
+    return () => {
+      setIsFloatingEnd(false);
+    };
   }, [curLevel]);
 
   useEffect(() => {

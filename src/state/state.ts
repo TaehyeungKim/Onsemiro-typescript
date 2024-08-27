@@ -10,6 +10,7 @@ export const signUpState = atom<SignUpClientStoreData>({
     schoolVerification: false,
     verifyCode: "",
     kakao_id: "",
+    nickname: "",
   },
 });
 

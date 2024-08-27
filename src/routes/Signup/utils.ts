@@ -12,16 +12,20 @@ export const executeOnDataFulfilled = (
       break;
 
     case 1:
-      if (data.kakao_id) execute();
+      if (data.kakao_id) {
+        execute();
+      }
+      break;
+
+    case 2:
+      if (data.nickname) execute();
       break;
     default:
 
     // case 1:
     //   if (data.kakao_id) execute();
     //   break;
-    // case 2:
-    //   if (data.nickname) execute();
-    //   break;
+
     // case 3:
     //   if (data.gender_identity) execute();
     //   break;
