@@ -4,6 +4,7 @@ import {
   KakaoAuth,
   NickName,
   AgeAndGender,
+  Sexual,
 } from "./contents/export";
 import { RecursiveFloatingContainer } from "@/components/UIEffect/Floating";
 
@@ -56,9 +57,13 @@ export default function SignUpPageContent({
                 <AgeAndGender />
               </ContentFloatContainer>
             );
+          case 4:
+            return (
+              <ContentFloatContainer key={4} floatListener={floatListener}>
+                <Sexual />
+              </ContentFloatContainer>
+            );
 
-          // case 4:
-          //   return <Sexual />;
           // case 5:
           //   return <Appearance />;
           // case 6:

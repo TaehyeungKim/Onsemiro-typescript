@@ -5,6 +5,8 @@ export type SignUpSubmitData = {
   nickname: string;
   gender: string;
   age: number;
+  gender_preference: string;
+  bdsm: string;
 };
 
 export type SignUpClientStoreData = SignUpSubmitData & {

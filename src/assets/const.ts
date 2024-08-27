@@ -468,3 +468,37 @@ export const GenderIdentity = [
   { main: "에이젠더", sub: "Agender" },
   { main: "논바이너리", sub: "Non-binary" },
 ] satisfies RadioCollection[];
+
+export const GenderPreference = [
+  {
+    main: "이성애자",
+    sub: "Heterosexual",
+  },
+  {
+    main: "대체로 이성애자",
+    sub: "Heteroflexible",
+  },
+  {
+    main: "양성애자",
+    sub: "Bisexual",
+  },
+  {
+    main: "대체로 동성애자",
+    sub: "Homoflexible",
+  },
+  { main: "동성애자", sub: "Homosexual" },
+  { main: "범성애자", sub: "Pansexual" },
+  { main: "무성애자", sub: "Asexual" },
+  { main: "남성애자", sub: "Androsexual" },
+  { main: "여성애자", sub: "Gynesexual" },
+  { main: "기타", sub: "Other" },
+] satisfies RadioCollection[];
+
+export const Bdsm = [
+  { main: "비성향자" },
+  { main: "DOM" },
+  { main: "SUB" },
+  { main: "SW" },
+  { main: "SADI" },
+  { main: "MASO" },
+] satisfies RadioCollection[];

@@ -24,6 +24,8 @@ export const executeOnDataFulfilled = (
     case 3:
       if (data.gender && data.age) execute();
       break;
+    case 4:
+      if (data.bdsm && data.gender_preference) execute();
 
     // case 1:
     //   if (data.kakao_id) execute();
