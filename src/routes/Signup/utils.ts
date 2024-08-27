@@ -21,14 +21,14 @@ export const executeOnDataFulfilled = (
       if (data.nickname) execute();
       break;
     default:
+    case 3:
+      if (data.gender && data.age) execute();
+      break;
 
     // case 1:
     //   if (data.kakao_id) execute();
     //   break;
 
-    // case 3:
-    //   if (data.gender_identity) execute();
-    //   break;
     // case 4:
     //   if (data.bdsm && data.gender_preference) execute();
     //   break;

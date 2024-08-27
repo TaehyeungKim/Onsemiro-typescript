@@ -1,5 +1,10 @@
 import { SignUpPageContentProps } from "./type";
-import { AuthenticateSelf, KakaoAuth, NickName } from "./contents/export";
+import {
+  AuthenticateSelf,
+  KakaoAuth,
+  NickName,
+  AgeAndGender,
+} from "./contents/export";
 import { RecursiveFloatingContainer } from "@/components/UIEffect/Floating";
 
 function ContentFloatContainer({
@@ -45,8 +50,13 @@ export default function SignUpPageContent({
               </ContentFloatContainer>
             );
 
-          // case 3:
-          //   return <AgeAndGender />;
+          case 3:
+            return (
+              <ContentFloatContainer key={3} floatListener={floatListener}>
+                <AgeAndGender />
+              </ContentFloatContainer>
+            );
+
           // case 4:
           //   return <Sexual />;
           // case 5:

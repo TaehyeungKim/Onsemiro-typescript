@@ -11,6 +11,8 @@ export const signUpState = atom<SignUpClientStoreData>({
     verifyCode: "",
     kakao_id: "",
     nickname: "",
+    gender: "",
+    age: 0,
   },
 });
 
