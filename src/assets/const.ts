@@ -1,3 +1,4 @@
+import { RadioCollection } from "@/components/CustomInput/type";
 import { Review } from "./type";
 
 export const REVIEWS: Review[] = [
@@ -446,3 +447,24 @@ export const AUTH_UNIV_LIST = [
   "POSTECH",
   "UNIST",
 ];
+
+export const GenderIdentity = [
+  {
+    main: "남성",
+    sub: "Male",
+  },
+  {
+    main: "여성",
+    sub: "Female",
+  },
+  {
+    main: "MTF",
+    sub: "Transgender",
+  },
+  {
+    main: "TMF",
+    sub: "Transgender",
+  },
+  { main: "에이젠더", sub: "Agender" },
+  { main: "논바이너리", sub: "Non-binary" },
+] satisfies RadioCollection[];
