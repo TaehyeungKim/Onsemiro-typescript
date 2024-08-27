@@ -8,3 +8,7 @@ export type Review = {
     gender: string;
   };
 };
+
+export type CharacterKeyMapType = {
+  [n in number]: string;
+};

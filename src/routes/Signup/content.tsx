@@ -1,12 +1,5 @@
 import { SignUpPageContentProps } from "./type";
-import {
-  AuthenticateSelf,
-  KakaoAuth,
-  NickName,
-  AgeAndGender,
-  Sexual,
-  Appearance,
-} from "./contents/export";
+import * as Contents from "./contents/export";
 import { RecursiveFloatingContainer } from "@/components/UIEffect/Floating";
 
 function ContentFloatContainer({
@@ -36,43 +29,47 @@ export default function SignUpPageContent({
           case 0:
             return (
               <ContentFloatContainer key={0} floatListener={floatListener}>
-                <AuthenticateSelf />
+                <Contents.AuthenticateSelf />
               </ContentFloatContainer>
             );
           case 1:
             return (
               <ContentFloatContainer key={1} floatListener={floatListener}>
-                <KakaoAuth />
+                <Contents.KakaoAuth />
               </ContentFloatContainer>
             );
           case 2:
             return (
               <ContentFloatContainer key={2} floatListener={floatListener}>
-                <NickName />
+                <Contents.NickName />
               </ContentFloatContainer>
             );
 
           case 3:
             return (
               <ContentFloatContainer key={3} floatListener={floatListener}>
-                <AgeAndGender />
+                <Contents.AgeAndGender />
               </ContentFloatContainer>
             );
           case 4:
             return (
               <ContentFloatContainer key={4} floatListener={floatListener}>
-                <Sexual />
+                <Contents.Sexual />
               </ContentFloatContainer>
             );
 
           case 5:
             return (
               <ContentFloatContainer key={5} floatListener={floatListener}>
-                <Appearance />
+                <Contents.Appearance />
               </ContentFloatContainer>
             );
-          // case 6:
-          //   return <Character />;
+          case 6:
+            return (
+              <ContentFloatContainer key={6} floatListener={floatListener}>
+                <Contents.Character />
+              </ContentFloatContainer>
+            );
           // case 7:
           //   return <Interest />;
           // case 8:

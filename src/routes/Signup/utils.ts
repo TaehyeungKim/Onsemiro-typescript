@@ -31,6 +31,9 @@ export const executeOnDataFulfilled = (
       if (data.appearance && data.height && data.eyelid && data.weight)
         execute();
       break;
+    case 6:
+      if (data.mbti && data.character) execute();
+      break;
 
     // case 1:
     //   if (data.kakao_id) execute();
@@ -40,9 +43,6 @@ export const executeOnDataFulfilled = (
     //   if (data.bdsm && data.gender_preference) execute();
     //   break;
 
-    // case 6:
-    //   if (data.mbti && data.character) execute();
-    //   break;
     // case 7:
     //   if (data.interest && data.interest.length > 0) execute();
     //   break;

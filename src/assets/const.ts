@@ -1,5 +1,6 @@
 import { RadioCollection } from "@/components/CustomInput/type";
-import { Review } from "./type";
+import { CharacterKeyMapType, Review } from "./type";
+import { MBTI } from "@/routes/Signup/type";
 
 export const REVIEWS: Review[] = [
   {
@@ -527,3 +528,20 @@ export const EyelidCollection = [
     main: "무쌍",
   },
 ] satisfies RadioCollection[];
+
+export const DEFAULT_MBTI_VALUE: MBTI = {
+  first: "E",
+  second: "S",
+  third: "T",
+  fourth: "J",
+};
+
+export const CharacterKeyMap: CharacterKeyMapType = {
+  0: "조용한",
+  1: "조금 조용한",
+  2: "보통",
+  3: "조금 활발한",
+  4: "활발한",
+};
+
+export const DEFAULT_CHARACTER_VALUE: string = CharacterKeyMap[0];

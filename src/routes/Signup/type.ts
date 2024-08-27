@@ -1,3 +1,10 @@
+export type MBTI = {
+  first: string;
+  second: string;
+  third: string;
+  fourth: string;
+};
+
 export type SignUpSubmitData = {
   univ: string;
   email: string;
@@ -11,6 +18,8 @@ export type SignUpSubmitData = {
   weight: string;
   appearance: string;
   eyelid: string;
+  mbti: string;
+  character: string;
 };
 
 export type SignUpClientStoreData = SignUpSubmitData & {

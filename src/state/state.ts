@@ -1,5 +1,6 @@
 import { atom } from "recoil";
 import { SignUpClientStoreData } from "@/routes/Signup/type";
+import { DEFAULT_MBTI_VALUE } from "@/assets/const";
 
 export const signUpState = atom<SignUpClientStoreData>({
   key: "signUp",
@@ -19,6 +20,8 @@ export const signUpState = atom<SignUpClientStoreData>({
     weight: "",
     appearance: "",
     eyelid: "",
+    mbti: "",
+    character: "",
   },
 });
 
