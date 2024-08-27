@@ -6,6 +6,10 @@
   --header-height: 467px;
 } */
 
+:root {
+  --pointer-box-height: 40px;
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -171,4 +175,19 @@ input[type="range"]::-ms-track {
 
 .range-point-right {
   transform: translateX(50%) scale(200%);
+}
+
+/* Pointer Box */
+
+.pointer-box-frame {
+  height: var(--pointer-box-height);
+  border-radius: calc(var(--pointer-box-height) / 2);
+}
+
+.pointer-box-triangle {
+  width: 0px;
+  height: 0px;
+  border-right: 15px solid transparent;
+  border-left: 15px solid transparent;
+  border-bottom-style: solid;
 }

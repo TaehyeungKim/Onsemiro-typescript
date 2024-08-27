@@ -70,8 +70,12 @@ export default function SignUpPageContent({
                 <Contents.Character />
               </ContentFloatContainer>
             );
-          // case 7:
-          //   return <Interest />;
+          case 7:
+            return (
+              <ContentFloatContainer key={7} floatListener={floatListener}>
+                <Contents.Interest />
+              </ContentFloatContainer>
+            );
           // case 8:
           //   return <FrequencyAndLocation />;
           // case 9:

@@ -20,6 +20,7 @@ export type SignUpSubmitData = {
   eyelid: string;
   mbti: string;
   character: string;
+  hobby: string[];
 };
 
 export type SignUpClientStoreData = SignUpSubmitData & {

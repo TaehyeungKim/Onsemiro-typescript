@@ -1,6 +1,7 @@
 import { RadioCollection } from "@/components/CustomInput/type";
-import { CharacterKeyMapType, Review } from "./type";
+import { CharacterKeyMapType, InterestValueSet, Review } from "./type";
 import { MBTI } from "@/routes/Signup/type";
+import * as InterestIcons from "./interest/export";
 
 export const REVIEWS: Review[] = [
   {
@@ -545,3 +546,65 @@ export const CharacterKeyMap: CharacterKeyMapType = {
 };
 
 export const DEFAULT_CHARACTER_VALUE: string = CharacterKeyMap[0];
+
+export const interestValueSet = [
+  {
+    icon: InterestIcons.date,
+    value: "데이트",
+  },
+  {
+    icon: InterestIcons.stock,
+    value: "주식",
+  },
+  {
+    icon: InterestIcons.design,
+    value: "디자인",
+  },
+  {
+    icon: InterestIcons.marketing,
+    value: "마케팅",
+  },
+  {
+    icon: InterestIcons.fragrance,
+    value: "향수",
+  },
+  {
+    icon: InterestIcons.shopping,
+    value: "쇼핑",
+  },
+  { icon: InterestIcons.fashion, value: "패션" },
+  { icon: InterestIcons.sport, value: "스포츠 관람" },
+  { icon: InterestIcons.fishing, value: "낚시" },
+  { icon: InterestIcons.camping, value: "캠핑" },
+  { icon: InterestIcons.mountain, value: "등산" },
+  { icon: InterestIcons.drink, value: "음주" },
+  { icon: InterestIcons.cooking, value: "요리" },
+  { icon: InterestIcons.restaurant, value: "맛집탐방" },
+  { icon: InterestIcons.cafe, value: "카페 가기" },
+  { icon: InterestIcons.game, value: "게임" },
+  { icon: InterestIcons.book, value: "독서" },
+  { icon: InterestIcons.performance, value: "공연 관람" },
+  { icon: InterestIcons.movie, value: "영화 감상" },
+  { icon: InterestIcons.netflix, value: "넷플릭스" },
+  { icon: InterestIcons.pet, value: "반려동물" },
+  { icon: InterestIcons.music, value: "음악 감상" },
+  { icon: InterestIcons.sing, value: "노래 부르기" },
+  { icon: InterestIcons.tv, value: "티비 시청" },
+  { icon: InterestIcons.scooter, value: "스쿠터" },
+  { icon: InterestIcons.walking, value: "산책" },
+  { icon: InterestIcons.draw, value: "그림 그리기" },
+  { icon: InterestIcons.bass, value: "악기 연주" },
+  { icon: InterestIcons.volunteer, value: "봉사활동" },
+  { icon: InterestIcons.trip, value: "여행" },
+  { icon: InterestIcons.interior, value: "인테리어" },
+  { icon: InterestIcons.health, value: "헬스" },
+  { icon: InterestIcons.exhibition, value: "전시회 관람" },
+  { icon: InterestIcons.computer, value: "컴퓨터" },
+  { icon: InterestIcons.money, value: "재테크" },
+  { icon: InterestIcons.dance, value: "댄스" },
+  { icon: InterestIcons.drive, value: "드라이브" },
+  { icon: InterestIcons.photo, value: "사진촬영" },
+  { icon: InterestIcons.tatoo, value: "문신" },
+  { icon: InterestIcons.pilates, value: "필라테스" },
+  { icon: InterestIcons.foreign, value: "외국어" },
+] satisfies InterestValueSet;

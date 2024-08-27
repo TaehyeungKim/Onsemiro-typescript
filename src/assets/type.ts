@@ -12,3 +12,10 @@ export type Review = {
 export type CharacterKeyMapType = {
   [n in number]: string;
 };
+
+export type InterestUnit = {
+  icon: string;
+  value: string;
+};
+
+export type InterestValueSet = InterestUnit[];

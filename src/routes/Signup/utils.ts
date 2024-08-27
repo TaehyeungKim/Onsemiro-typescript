@@ -34,6 +34,9 @@ export const executeOnDataFulfilled = (
     case 6:
       if (data.mbti && data.character) execute();
       break;
+    case 7:
+      if (data.hobby && data.hobby.length > 0) execute();
+      break;
 
     // case 1:
     //   if (data.kakao_id) execute();

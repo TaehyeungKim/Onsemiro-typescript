@@ -22,6 +22,7 @@ export const signUpState = atom<SignUpClientStoreData>({
     eyelid: "",
     mbti: "",
     character: "",
+    hobby: [],
   },
 });
 
