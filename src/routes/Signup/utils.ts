@@ -46,6 +46,9 @@ export const executeOnDataFulfilled = (
     case 10:
       if (data.introduction) execute();
       break;
+    case 11:
+      if (data.gender_wanted) execute();
+      break;
 
     // case 1:
     //   if (data.kakao_id) execute();
@@ -59,9 +62,6 @@ export const executeOnDataFulfilled = (
     //   if (data.interest && data.interest.length > 0) execute();
     //   break;
 
-    // case 11:
-    //   if (data.prefer_gender_identity) execute();
-    //   break;
     // case 12:
     //   execute();
     //   break;

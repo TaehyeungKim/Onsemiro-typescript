@@ -94,8 +94,13 @@ export default function SignUpPageContent({
                 <Contents.Introduction />
               </ContentFloatContainer>
             );
-          // case 11:
-          //   return <PreferIdentity />;
+          case 11:
+            return (
+              <ContentFloatContainer key={11} floatListener={floatListener}>
+                <Contents.PreferGenderIdentity />
+              </ContentFloatContainer>
+            );
+
           // case 12:
           //   return <SameUniv />;
           // case 13:
