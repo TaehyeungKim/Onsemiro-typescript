@@ -43,6 +43,9 @@ export const executeOnDataFulfilled = (
     case 9:
       if (data.std_test_report && data.photo) execute();
       break;
+    case 10:
+      if (data.introduction) execute();
+      break;
 
     // case 1:
     //   if (data.kakao_id) execute();
@@ -56,9 +59,6 @@ export const executeOnDataFulfilled = (
     //   if (data.interest && data.interest.length > 0) execute();
     //   break;
 
-    // case 10:
-    //   if (data.introduction) execute();
-    //   break;
     // case 11:
     //   if (data.prefer_gender_identity) execute();
     //   break;

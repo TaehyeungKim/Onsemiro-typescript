@@ -29,6 +29,7 @@ export const signUpState = atom<SignUpClientStoreData>({
     location: "",
     photo: null,
     std_test_report: null,
+    introduction: "",
   },
 });
 

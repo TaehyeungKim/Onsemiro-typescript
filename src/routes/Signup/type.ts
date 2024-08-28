@@ -28,6 +28,7 @@ export type SignUpSubmitData = {
   location: string;
   photo: File | null | undefined;
   std_test_report: File | null | undefined;
+  introduction: string;
 };
 
 export type SignUpClientStoreData = SignUpSubmitData & {

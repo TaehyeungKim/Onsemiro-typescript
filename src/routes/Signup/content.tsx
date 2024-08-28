@@ -88,8 +88,12 @@ export default function SignUpPageContent({
                 <Contents.Photos />
               </ContentFloatContainer>
             );
-          // case 10:
-          //   return <Introduction />;
+          case 10:
+            return (
+              <ContentFloatContainer key={10} floatListener={floatListener}>
+                <Contents.Introduction />
+              </ContentFloatContainer>
+            );
           // case 11:
           //   return <PreferIdentity />;
           // case 12:
