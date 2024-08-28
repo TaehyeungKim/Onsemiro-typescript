@@ -6,3 +6,4 @@ export { default as Sexual } from "./_sexual";
 export { default as Appearance } from "./_appearance";
 export { default as Character } from "./_character";
 export { default as Interest } from "./_interest";
+export { default as FrequencyAndLocation } from "./_frequency-region";

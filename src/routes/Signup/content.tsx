@@ -76,8 +76,12 @@ export default function SignUpPageContent({
                 <Contents.Interest />
               </ContentFloatContainer>
             );
-          // case 8:
-          //   return <FrequencyAndLocation />;
+          case 8:
+            return (
+              <ContentFloatContainer key={8} floatListener={floatListener}>
+                <Contents.FrequencyAndLocation />
+              </ContentFloatContainer>
+            );
           // case 9:
           //   return <Photos />;
           // case 10:

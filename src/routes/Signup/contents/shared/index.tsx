@@ -2,11 +2,15 @@ import {
   CharacterSettingSectionProps,
   MBTILetterRowProps,
   MBTISettingSectionProps,
+  MeetFrequencyProps,
+  SelectRegionLowProps,
+  SelectRegionsProps,
 } from "./type";
 import { RangeBar } from "@/components/CustomInput";
 import { CharacterKeyMap } from "@/assets/const";
-import { useEffect, useState, useCallback } from "react";
+import { useEffect, useState, useCallback, useRef } from "react";
 import { MBTI } from "../../type";
+import { CitySet } from "@/assets/type";
 
 function MBTILetterRow({
   order,
@@ -145,6 +149,90 @@ export function CharacterSettingSection({
       <h5 className="text-center text-lg mt-5">
         {CharacterKeyMap[characterIndex]}
       </h5>
+    </>
+  );
+}
+
+//region
+function SelectRegionRow({
+  label,
+  regions,
+  setter,
+  selected,
+}: SelectRegionLowProps) {
+  const ref = useRef<HTMLOptionElement>(null);
+
+  const [selectedRegion, setSelectedRegion] = useState(selected);
+
+  useEffect(() => {
+    if (!selectedRegion) ref.current?.setAttribute("selected", "true");
+    setter(selectedRegion);
+  }, [selectedRegion]);
+
+  return (
+    <div className="flex justify-between items-center">
+      <label htmlFor="city" className="block w-20">
+        {label}
+      </label>
+      <select
+        className="block grow ml-16 bg-input box-border px-3 py-2 rounded-md"
+        onChange={(e) => setSelectedRegion(e.target.value)}
+        value={selectedRegion}
+      >
+        <option hidden ref={ref}>
+          선택하기
+        </option>
+        {regions.map((region) => (
+          <option key={region} value={region} id={region}>
+            {region}
+          </option>
+        ))}
+      </select>
+    </div>
+  );
+}
+
+export function SelectRegions({ set, setter, selected }: SelectRegionsProps) {
+  return (
+    <>
+      <div className="mb-3">
+        <SelectRegionRow
+          label="도시"
+          regions={set.map((set) => set.city)}
+          setter={setter.city}
+          selected={selected.city}
+        ></SelectRegionRow>
+      </div>
+
+      {selected.city && (
+        <div>
+          <SelectRegionRow
+            label="행정구역"
+            regions={(set.find((s) => s.city === selected.city) as CitySet).sub}
+            setter={setter.sub}
+            selected={selected.sub}
+          ></SelectRegionRow>
+        </div>
+      )}
+    </>
+  );
+}
+
+//location
+export function MeetFrequency({ meetNum, setter }: MeetFrequencyProps) {
+  return (
+    <>
+      <div className="w-[90%] mx-auto">
+        <RangeBar
+          max={4}
+          min={1}
+          step={1}
+          defaultValue={meetNum}
+          setter={(value: string) => setter(parseInt(value))}
+          captions={["1번", "2번", "3번", "4번 이상"]}
+        ></RangeBar>
+      </div>
+      <h5 className="text-center mt-4">{`일주일에 ${meetNum}번`}</h5>
     </>
   );
 }

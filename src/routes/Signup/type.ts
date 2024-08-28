@@ -1,3 +1,6 @@
+import { CitySet } from "@/assets/type";
+import { InferElementInArray } from "@/components/global/util";
+
 export type MBTI = {
   first: string;
   second: string;
@@ -21,12 +24,16 @@ export type SignUpSubmitData = {
   mbti: string;
   character: string;
   hobby: string[];
+  meeting_frequency: number;
+  location: string;
 };
 
 export type SignUpClientStoreData = SignUpSubmitData & {
   verifyCode: string;
   phoneVerification: boolean;
   schoolVerification: boolean;
+  city: CitySet["city"];
+  subRegion: InferElementInArray<CitySet["sub"]>;
 };
 
 export interface SignUpPageContentProps {

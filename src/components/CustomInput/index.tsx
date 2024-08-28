@@ -91,11 +91,7 @@ export function RangeBar({
         onChange={(e) => setter(e.target.value)}
       ></input>
       <div
-        className={`h-1 w-full bg-main 
-          ${options?.bgStyle?.reduce(
-            (prev: string, cur: string) => `${prev} ` + cur
-          )}
-        `}
+        className={`h-1 w-full bg-main ${options?.bgStyle?.reduce((prev: string, cur: string) => `${prev} ` + cur) ?? ""}`}
       >
         <div className="flex justify-between w-full h-full absolute top-0 items-center">
           {captions?.map((caption, i) => (

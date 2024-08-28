@@ -1,5 +1,5 @@
 import { RadioCollection } from "@/components/CustomInput/type";
-import { CharacterKeyMapType, InterestValueSet, Review } from "./type";
+import { CharacterKeyMapType, InterestValueSet, Review, CitySet } from "./type";
 import { MBTI } from "@/routes/Signup/type";
 import * as InterestIcons from "./interest/export";
 
@@ -608,3 +608,79 @@ export const interestValueSet = [
   { icon: InterestIcons.pilates, value: "필라테스" },
   { icon: InterestIcons.foreign, value: "외국어" },
 ] satisfies InterestValueSet;
+
+export const CITYSET = [
+  {
+    city: "서울특별시",
+    sub: [
+      "종로구",
+      "중구",
+      "용산구",
+      "성동구",
+      "광진구",
+      "동대문구",
+      "중랑구",
+      "성북구",
+      "강북구",
+      "도봉구",
+      "노원구",
+      "은평구",
+      "서대문구",
+      "마포구",
+      "양천구",
+      "강서구",
+      "구로구",
+      "금천구",
+      "영등포구",
+      "동작구",
+      "관악구",
+      "서초구",
+      "강남구",
+      "송파구",
+      "강동구",
+    ],
+  },
+  {
+    city: "인천광역시",
+    sub: [
+      "중구",
+      "동구",
+      "미추홀구",
+      "연수구",
+      "남동구",
+      "부평구",
+      "계양구",
+      "서구",
+      "강화군",
+      "옹진군",
+    ],
+  },
+  {
+    city: "수원시",
+    sub: ["장안구", "권선구", "팔달구", "영통구"],
+  },
+  {
+    city: "성남시",
+    sub: ["수정구", "중원구", "분당구"],
+  },
+  {
+    city: "안양시",
+    sub: ["만안구", "동안구"],
+  },
+  {
+    city: "부천시",
+    sub: ["원미구", "소사구", "오정구"],
+  },
+  {
+    city: "안산시",
+    sub: ["상록구", "단원구"],
+  },
+  {
+    city: "고양시",
+    sub: ["덕양구", "일산동구", "일산서구"],
+  },
+  {
+    city: "용인시",
+    sub: ["처인구", "기흥구", "수지구"],
+  },
+] satisfies CitySet[];

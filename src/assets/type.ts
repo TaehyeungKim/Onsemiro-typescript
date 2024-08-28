@@ -19,3 +19,11 @@ export type InterestUnit = {
 };
 
 export type InterestValueSet = InterestUnit[];
+
+type City = string;
+type CitySub = string;
+
+export type CitySet = {
+  city: City;
+  sub: CitySub[];
+};

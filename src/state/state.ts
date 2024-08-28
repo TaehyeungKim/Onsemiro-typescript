@@ -23,6 +23,10 @@ export const signUpState = atom<SignUpClientStoreData>({
     mbti: "",
     character: "",
     hobby: [],
+    meeting_frequency: 0,
+    city: "",
+    subRegion: "",
+    location: "",
   },
 });
 
