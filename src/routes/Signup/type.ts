@@ -30,6 +30,7 @@ export type SignUpSubmitData = {
   std_test_report: File | null | undefined;
   introduction: string;
   gender_wanted: string;
+  match_same_univ: boolean | undefined;
 };
 
 export type SignUpClientStoreData = SignUpSubmitData & {

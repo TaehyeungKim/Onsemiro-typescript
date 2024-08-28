@@ -49,6 +49,9 @@ export const executeOnDataFulfilled = (
     case 11:
       if (data.gender_wanted) execute();
       break;
+    case 12:
+      if (data.match_same_univ !== undefined) execute();
+      break;
 
     // case 1:
     //   if (data.kakao_id) execute();
@@ -62,9 +65,6 @@ export const executeOnDataFulfilled = (
     //   if (data.interest && data.interest.length > 0) execute();
     //   break;
 
-    // case 12:
-    //   execute();
-    //   break;
     // case 13:
     //   execute();
     //   break;

@@ -5,3 +5,5 @@ export { default as Login } from "./login.png";
 export { default as CheckBL } from "./check_black.png";
 export { default as Search } from "./search.png";
 export { default as Upload } from "./upload.png";
+export { default as Ok } from "./ok.png";
+export { default as No } from "./no.png";

@@ -31,6 +31,7 @@ export const signUpState = atom<SignUpClientStoreData>({
     std_test_report: null,
     introduction: "",
     gender_wanted: "",
+    match_same_univ: undefined,
   },
 });
 

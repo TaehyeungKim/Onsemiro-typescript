@@ -10,3 +10,4 @@ export { default as FrequencyAndLocation } from "./_frequency-region";
 export { default as Photos } from "./_photos";
 export { default as Introduction } from "./_introduction";
 export { default as PreferGenderIdentity } from "./_prefer-gender-identity";
+export { default as SameUniv } from "./_same-univ";
