@@ -26,6 +26,8 @@ export type SignUpSubmitData = {
   hobby: string[];
   meeting_frequency: number;
   location: string;
+  photo: File | null | undefined;
+  std_test_report: File | null | undefined;
 };
 
 export type SignUpClientStoreData = SignUpSubmitData & {

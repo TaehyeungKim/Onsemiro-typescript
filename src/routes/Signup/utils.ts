@@ -40,6 +40,9 @@ export const executeOnDataFulfilled = (
     case 8:
       if (data.meeting_frequency && data.city && data.subRegion) execute();
       break;
+    case 9:
+      if (data.std_test_report && data.photo) execute();
+      break;
 
     // case 1:
     //   if (data.kakao_id) execute();
@@ -53,9 +56,6 @@ export const executeOnDataFulfilled = (
     //   if (data.interest && data.interest.length > 0) execute();
     //   break;
 
-    // case 9:
-    //   if (data.std && data.photo) execute();
-    //   break;
     // case 10:
     //   if (data.introduction) execute();
     //   break;
