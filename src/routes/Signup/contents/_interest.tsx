@@ -56,7 +56,12 @@ export default function Interest() {
         <div className="flex justify-center mt-2 floating">
           <PointerBox>
             {interest.map((interest) => (
-              <Icon src={interest.icon} tag="div" className="w-4 mx-1"></Icon>
+              <Icon
+                key={interest.value}
+                src={interest.icon}
+                tag="div"
+                className="w-4 mx-1"
+              ></Icon>
             ))}
           </PointerBox>
         </div>
