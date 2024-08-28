@@ -11,9 +11,9 @@ export default function Interest() {
   const [signUpData, setSignUpData] = useRecoilState(signUpState);
 
   const [interest, setInterest] = useState<InterestValueSet>(() => {
-    return interestValueSet.filter((set) => {
-      signUpData.hobby.some((hobby) => set.value === hobby);
-    });
+    return interestValueSet.filter((set) =>
+      signUpData.hobby.some((hobby) => set.value === hobby)
+    );
   });
 
   useEffect(() => {
