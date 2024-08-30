@@ -32,6 +32,8 @@ export const signUpState = atom<SignUpClientStoreData>({
     introduction: "",
     gender_wanted: "",
     match_same_univ: undefined,
+    ideal_condition: {},
+    preference: {},
   },
 });
 

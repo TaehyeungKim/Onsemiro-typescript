@@ -108,8 +108,13 @@ export default function SignUpPageContent({
               </ContentFloatContainer>
             );
 
-          // case 13:
-          //   return <Ideal />;
+          case 13:
+            return (
+              <ContentFloatContainer key={13} floatListener={floatListener}>
+                <Contents.Ideal />
+              </ContentFloatContainer>
+            );
+
           default:
         }
       })()}

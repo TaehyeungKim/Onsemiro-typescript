@@ -8,6 +8,17 @@ export type MBTI = {
   fourth: string;
 };
 
+export type IdealCategory =
+  | "age"
+  | "bdsm"
+  | "height"
+  | "weight"
+  | "appearance"
+  | "eyelid"
+  | "mbti"
+  | "character"
+  | "location";
+
 export type SignUpSubmitData = {
   univ: string;
   email: string;
@@ -31,6 +42,11 @@ export type SignUpSubmitData = {
   introduction: string;
   gender_wanted: string;
   match_same_univ: boolean | undefined;
+  ideal_condition: {
+    required?: IdealCategory;
+    optional_1?: IdealCategory;
+    optional_2?: IdealCategory;
+  };
 };
 
 export type SignUpClientStoreData = SignUpSubmitData & {
@@ -39,6 +55,11 @@ export type SignUpClientStoreData = SignUpSubmitData & {
   schoolVerification: boolean;
   city: CitySet["city"];
   subRegion: InferElementInArray<CitySet["sub"]>;
+  preference: {
+    [type in keyof SignUpSubmitData["ideal_condition"]]: {
+      [category in IdealCategory]: SignUpSubmitData[category];
+    };
+  };
 };
 
 export interface SignUpPageContentProps {

@@ -1,0 +1,9 @@
+export { default as age } from "./age.png";
+export { default as appearance } from "./appearance.png";
+export { default as character } from "./character.png";
+export { default as eyelid } from "./eyelid.png";
+export { default as height } from "./height.png";
+export { default as location } from "./location.png";
+export { default as mbti } from "./mbti.png";
+export { default as bdsm } from "./bdsm.png";
+export { default as weight } from "./weight.png";

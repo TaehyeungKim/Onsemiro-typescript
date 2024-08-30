@@ -1,7 +1,14 @@
 import { RadioCollection } from "@/components/CustomInput/type";
-import { CharacterKeyMapType, InterestValueSet, Review, CitySet } from "./type";
+import {
+  CharacterKeyMapType,
+  InterestValueSet,
+  Review,
+  CitySet,
+  CategorySet,
+} from "./type";
 import { MBTI } from "@/routes/Signup/type";
 import * as InterestIcons from "./interest/export";
+import * as CategoryIcons from "./category/export";
 
 export const REVIEWS: Review[] = [
   {
@@ -684,3 +691,51 @@ export const CITYSET = [
     sub: ["처인구", "기흥구", "수지구"],
   },
 ] satisfies CitySet[];
+
+export const Categories = [
+  {
+    category: "age",
+    icon: CategoryIcons.age,
+    label: "나이",
+  },
+  {
+    category: "bdsm",
+    icon: CategoryIcons.bdsm,
+    label: "성적 성향",
+  },
+  {
+    category: "height",
+    icon: CategoryIcons.height,
+    label: "키",
+  },
+  {
+    category: "weight",
+    icon: CategoryIcons.weight,
+    label: "체형",
+  },
+  {
+    category: "appearance",
+    icon: CategoryIcons.appearance,
+    label: "생김새",
+  },
+  {
+    category: "eyelid",
+    icon: CategoryIcons.eyelid,
+    label: "쌍꺼풀 유무",
+  },
+  {
+    category: "mbti",
+    icon: CategoryIcons.mbti,
+    label: "MBTI",
+  },
+  {
+    category: "character",
+    icon: CategoryIcons.character,
+    label: "성격",
+  },
+  {
+    category: "location",
+    icon: CategoryIcons.location,
+    label: "거주 지역",
+  },
+] satisfies CategorySet[];

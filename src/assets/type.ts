@@ -1,3 +1,5 @@
+import { IdealCategory } from "@/routes/Signup/type";
+
 export type Review = {
   point: number;
   info: {
@@ -26,4 +28,10 @@ type CitySub = string;
 export type CitySet = {
   city: City;
   sub: CitySub[];
+};
+
+export type CategorySet = {
+  category: IdealCategory;
+  icon: string;
+  label: string;
 };
