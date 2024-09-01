@@ -1,10 +1,10 @@
 # Onsemiro - 나와 성향이 맞는 사람을 추천해주는 fwb 매칭 서비스
 
 ## Stack
-✓ Core: React.js + Typescript + Django
-🎨 Styling: TailwindCSS
-✍️ State Management: Recoil
-🚀 Deploy: Vercel, AWS
+✓ Core: React.js + Typescript + Django <br/>
+🎨 Styling: TailwindCSS <br/>
+✍️ State Management: Recoil <br/>
+🚀 Deploy: Vercel, AWS <br/>
 
 ## Feature
 회원가입 - 사용자 추천 시 사용자의 선호/성향을 반영하기 위해 설문 형태로 사용자의 정보 수집 <br/>
