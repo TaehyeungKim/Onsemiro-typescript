@@ -1,30 +1,37 @@
 import { SignUpContentSection } from "./_base";
 import { signUpState } from "@/state/state";
 import {
-  IdealConditionSelectCategoryProps,
+  IdealChoiceSettingProps,
+  IdealChoiceCategoryProps,
   IdealConditionSelectProps,
+  IdealChoiceCategoryDetailProps,
 } from "./type";
-import { useRecoilValue } from "recoil";
-import { useState, useCallback } from "react";
+import { useRecoilState, useRecoilValue } from "recoil";
+import { useState, useCallback, useEffect, useMemo } from "react";
 import Icon from "@/components/Icon";
-import { Categories } from "@/assets/const";
+import { Categories, IdealCategoryCaption } from "@/assets/const";
 import { CategorySet } from "@/assets/type";
 import { createPortal } from "react-dom";
-import { Back } from "@/assets/buttons/export";
-import { SignUpSubmitData } from "../type";
+
+import { SignUpClientStoreData, SignUpSubmitData } from "../type";
 import { RecursiveFloatingContainer } from "@/components/UIEffect/Floating";
+import {
+  IdealChoiceDetailLayout,
+  IdealChoiceSettingLayout,
+} from "@/layout/SignUpRelated";
+import * as IdealSetting from "./_ideal-detail";
 
 function ConditionSelect({ label, reqType }: IdealConditionSelectProps) {
   const signUpData = useRecoilValue(signUpState);
-  const [categoryVisible, setCategoryVisible] = useState<boolean>(false);
+  const [settingVisible, setSettingVisible] = useState<boolean>(false);
 
   return (
     <>
       {createPortal(
-        <IdealChoiceCategory
+        <IdealChoiceSetting
           reqType={reqType}
-          visible={categoryVisible}
-          toggle={setCategoryVisible}
+          visible={settingVisible}
+          close={() => setSettingVisible(false)}
         />,
         document.getElementById("appFrame") as Element
       )}
@@ -32,15 +39,17 @@ function ConditionSelect({ label, reqType }: IdealConditionSelectProps) {
         <h3 className="py-7 text-2xl text-center font-bold">{label}</h3>
         {!signUpData.preference || !signUpData.preference[reqType] ? (
           <button
-            className="h-12 mb-8 block w-fit after:content-[''] after:w-full after:block after:border-b-2 after:border-main text-main"
-            onClick={() => setCategoryVisible(true)}
+            className="h-12 mb-4 block w-fit after:content-[''] after:w-full after:block after:border-b-2 after:border-main text-main"
+            onClick={() => setSettingVisible(true)}
           >
             고르기
           </button>
         ) : (
           <button
-            className=" bg-input-less-darker w-4/5 py-3 flex justify-center items-center rounded-lg mb-5"
-            onClick={() => setCategoryVisible(true)}
+            className=" bg-input-less-darker w-4/5 py-3 flex justify-center items-center rounded-lg mb-4"
+            onClick={() => {
+              setSettingVisible(true);
+            }}
           >
             <div className="w-5 mr-2">
               <Icon
@@ -73,11 +82,153 @@ function ConditionSelect({ label, reqType }: IdealConditionSelectProps) {
   );
 }
 
-function IdealChoiceCategory({
+function IdealChoiceCategoryDetail({
+  back,
+  category,
+  reqType,
+  select,
+}: IdealChoiceCategoryDetailProps) {
+  const [signUpData, setSignUpData] = useRecoilState(signUpState);
+
+  const props = useMemo(() => {
+    return {
+      reqType,
+      data: signUpData,
+    };
+  }, [signUpData, reqType, category]);
+
+  return (
+    <IdealChoiceDetailLayout
+      key={category.category}
+      caption={IdealCategoryCaption[category.category]}
+      close={back}
+      category={category}
+      select={(data: SignUpClientStoreData["preference"]) => {
+        setSignUpData({
+          ...signUpData,
+          preference: {
+            ...signUpData.preference,
+            ...data,
+          },
+        });
+        select();
+      }}
+      reqType={reqType}
+    >
+      {(() => {
+        switch (category.category) {
+          case "age":
+            return (
+              <IdealSetting.IdealAgeSetting
+                {...props}
+              ></IdealSetting.IdealAgeSetting>
+            );
+          case "bdsm":
+            return (
+              <IdealSetting.IdealBDSMSetting
+                {...props}
+              ></IdealSetting.IdealBDSMSetting>
+            );
+          case "height":
+            return (
+              <IdealSetting.IdealHeightSetting
+                {...props}
+              ></IdealSetting.IdealHeightSetting>
+            );
+          case "weight":
+            return (
+              <IdealSetting.IdealWeightSetting
+                {...props}
+              ></IdealSetting.IdealWeightSetting>
+            );
+          case "appearance":
+            return (
+              <IdealSetting.IdealAppearanceSetting
+                {...props}
+              ></IdealSetting.IdealAppearanceSetting>
+            );
+          case "eyelid":
+            return (
+              <IdealSetting.IdealEyelidSetting
+                {...props}
+              ></IdealSetting.IdealEyelidSetting>
+            );
+          case "mbti":
+            return (
+              <IdealSetting.IdealMBTISetting
+                {...props}
+              ></IdealSetting.IdealMBTISetting>
+            );
+          case "character":
+            return (
+              <IdealSetting.IdealCharacterSetting
+                {...props}
+              ></IdealSetting.IdealCharacterSetting>
+            );
+          case "location":
+            return (
+              <IdealSetting.IdealLocationSetting
+                {...props}
+              ></IdealSetting.IdealLocationSetting>
+            );
+        }
+      })()}
+    </IdealChoiceDetailLayout>
+  );
+}
+
+function IdealChoiceSetting({
   reqType,
   visible,
-  toggle,
-}: IdealConditionSelectCategoryProps) {
+  close,
+}: IdealChoiceSettingProps) {
+  const [categoryVisible, setCategoryVisible] = useState<boolean>(false);
+  const [categorySelected, setCategorySelected] = useState<CategorySet>();
+
+  const selectCategory = (set: CategorySet) => {
+    setCategorySelected(set);
+    setCategoryVisible(false);
+  };
+
+  useEffect(() => {
+    if (visible && !categorySelected) setCategoryVisible(true);
+  }, [visible]);
+
+  if (!visible) return <></>;
+
+  if (categoryVisible)
+    return (
+      <IdealChoiceCategory
+        reqType={reqType}
+        close={close}
+        open={(set: CategorySet) => selectCategory(set)}
+      />
+    );
+  if (!categoryVisible && categorySelected) {
+    return (
+      <IdealChoiceCategoryDetail
+        back={() => {
+          setCategoryVisible(true);
+          setCategorySelected(undefined);
+        }}
+        select={() => {
+          close();
+          setCategorySelected(undefined);
+        }}
+        category={categorySelected}
+        reqType={reqType}
+      />
+    );
+  }
+  return <></>;
+}
+
+function IdealChoiceCategory({
+  reqType,
+
+  close,
+  open,
+}: IdealChoiceCategoryProps) {
   const signUpData = useRecoilValue(signUpState);
 
   const blockChoices = useCallback(
@@ -97,26 +248,13 @@ function IdealChoiceCategory({
     [reqType]
   );
 
-  if (!visible) return <></>;
-
   return (
-    <div className="absolute top-0 left-0 bg-white w-full">
-      <header className="p-3">
-        <Icon
-          src={Back}
-          className="w-5 block"
-          tag="button"
-          onClick={() => {
-            toggle(false);
-          }}
-        />
-      </header>
-
-      <div className="w-full px-4 pt-3">
+    <IdealChoiceSettingLayout close={close}>
+      <div className="absolute w-full px-4 pt-10 top-0 bottom-0  box-border flex flex-col">
         <SignUpContentSection>
           <h5 className="text-lg">원하는 이상형의 조건을 선택해주세요.</h5>
         </SignUpContentSection>
-        <SignUpContentSection>
+        <SignUpContentSection className="overflow-hidden grow">
           <RecursiveFloatingContainer
             floating="floating"
             className="w-11/12 mx-auto"
@@ -126,12 +264,11 @@ function IdealChoiceCategory({
                 <button
                   key={set.label}
                   className={`bg-input w-full py-3 flex justify-center items-center rounded-lg my-3 cursor-pointer ${
-                    blockChoices(set.category) ? "opacity-20" : null
+                    blockChoices(set.category) ? "opacity-30" : ""
                   }`}
                   onClick={() => {
                     if (!blockChoices(set.category)) {
-                      // setIsConditionSetVisible(true);
-                      // setType(condition);
+                      open(set);
                     }
                   }}
                 >
@@ -143,7 +280,7 @@ function IdealChoiceCategory({
           </RecursiveFloatingContainer>
         </SignUpContentSection>
       </div>
-    </div>
+    </IdealChoiceSettingLayout>
   );
 }
 
@@ -158,7 +295,7 @@ export default function Ideal() {
         </h5>
       </SignUpContentSection>
       <SignUpContentSection>
-        <div className="flex flex-col w-11/12 mx-auto gap-y-3">
+        <div className="flex flex-row w-11/12 mx-auto gap-3 flex-wrap">
           <div className="flex w-full">
             <ConditionSelect label={<>필수 조건</>} reqType={"required"} />
           </div>

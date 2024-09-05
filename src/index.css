@@ -136,7 +136,7 @@ input[type="range"]::-ms-track {
     transform: translateY(20px);
   }
   100% {
-    opacity: 1;
+    opacity: auto;
     transform: translateY(0px);
   }
 }

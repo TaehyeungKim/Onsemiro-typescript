@@ -35,3 +35,5 @@ export type CategorySet = {
   icon: string;
   label: string;
 };
+
+export type IdealCategoryCaptionType = Record<IdealCategory, string>;

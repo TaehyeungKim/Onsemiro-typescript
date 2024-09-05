@@ -8,7 +8,7 @@ import SignUpPageContent from "./content";
 import { FloatElement } from "@/components/UIEffect/Floating";
 import { executeOnDataFulfilled } from "./utils";
 import { useEffect } from "react";
-import { useRecoilValue } from "recoil";
+import { useRecoilState, useRecoilValue } from "recoil";
 import { SignUpClientStoreData } from "./type";
 import { signUpState } from "@/state/state";
 import { MainCustomButton } from "@/components/CustomButton";
@@ -18,7 +18,7 @@ export default function SignUpPage() {
   const TOTAL_LEVEL_COUNT = 14;
 
   const navigate = useNavigate();
-  const [curLevel, setCurLevel] = useState<number>(12);
+  const [curLevel, setCurLevel] = useState<number>(0);
 
   const signUpData = useRecoilValue<SignUpClientStoreData>(signUpState);
 
@@ -48,6 +48,7 @@ export default function SignUpPage() {
   useLayoutEffect(() => {
     return () => {
       setIsFloatingEnd(false);
+      setNextVisible(false);
     };
   }, [curLevel]);
 
@@ -63,7 +64,7 @@ export default function SignUpPage() {
   }, [signUpData, isFloatingEnd]);
 
   return (
-    <div className="box-border pb-11 flex flex-col min-h-screen">
+    <div className="box-border flex flex-col h-full">
       {stopAlertVisible && (
         <SignUpCancleAlert
           close={() => setStopAlertVisible(false)}
@@ -105,16 +106,21 @@ export default function SignUpPage() {
           {curLevel + 1}/{TOTAL_LEVEL_COUNT}
         </h5>
       </header>
+
       <SignUpPageContent
         level={curLevel}
         floatListener={() => setIsFloatingEnd(true)}
       />
-      <FloatElement condition={nextVisible}>
-        <SignUpNextButton
-          level={curLevel}
-          next={() => nextAction(signUpData)}
-        />
-      </FloatElement>
+      <footer className="h-14">
+        {nextVisible && (
+          <FloatElement condition={nextVisible}>
+            <SignUpNextButton
+              level={curLevel}
+              next={() => nextAction(signUpData)}
+            />
+          </FloatElement>
+        )}
+      </footer>
     </div>
   );
 }
@@ -125,6 +131,8 @@ interface SignUpNextButtonProps {
 }
 
 function SignUpNextButton({ level, next }: SignUpNextButtonProps) {
+  const [signUpData, setSignUpData] = useRecoilState(signUpState);
+
   const buttonActionPerLevel = useCallback(() => {
     switch (level) {
       case 0:
@@ -136,16 +144,16 @@ function SignUpNextButton({ level, next }: SignUpNextButtonProps) {
 
   return (
     <div className="flex my-auto w-11/12 mx-auto gap-x-10 px-6">
-      {/* {level === 13 ? (
-            <MainCustomButton
-              className="!bg-background !text-black !mx-0 grow"
-              onClick={() => {
-                setSignUpData({ ...signUpData, preference: undefined });
-              }}
-            >
-              SKIP
-            </MainCustomButton>
-          ) : null} */}
+      {level === 13 ? (
+        <MainCustomButton
+          className="!bg-background !text-black !mx-0 grow"
+          onClick={() => {
+            setSignUpData({ ...signUpData, preference: {} });
+          }}
+        >
+          SKIP
+        </MainCustomButton>
+      ) : null}
 
       <MainCustomButton
         onClick={next}

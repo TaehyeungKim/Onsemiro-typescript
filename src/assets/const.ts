@@ -5,6 +5,7 @@ import {
   Review,
   CitySet,
   CategorySet,
+  IdealCategoryCaptionType,
 } from "./type";
 import { MBTI } from "@/routes/Signup/type";
 import * as InterestIcons from "./interest/export";
@@ -739,3 +740,15 @@ export const Categories = [
     label: "거주 지역",
   },
 ] satisfies CategorySet[];
+
+export const IdealCategoryCaption: IdealCategoryCaptionType = {
+  age: "이상형의 나이 범위는?",
+  bdsm: "이상형의 성적 성향은?",
+  weight: "이상형의 체형은?",
+  appearance: "이상형의 생김새는?",
+  character: "이상형의 성격은?",
+  eyelid: "이상형의 쌍커풀 유무는?",
+  location: "이상형의 거주 지역은?",
+  height: "이상형의 키 범위는?",
+  mbti: "이상형의 MBTI는?",
+};
