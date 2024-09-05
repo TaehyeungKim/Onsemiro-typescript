@@ -4,9 +4,9 @@ export default function AppFrame({
   children,
 }: ComponentPropsWithoutRef<"div">) {
   return (
-    <div className="bg-background-darker">
+    <div className="bg-background-darker h-screen">
       <div
-        className="relative max-w-main-frame w-screen flex flex-col bg-background margin mx-auto min-h-screen  border-background box-border"
+        className="relative max-w-main-frame w-screen flex flex-col bg-background margin mx-auto h-screen  border-background box-border"
         id="appFrame"
       >
         {children}

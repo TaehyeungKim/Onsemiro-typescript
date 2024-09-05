@@ -4,6 +4,7 @@ import SignInPage from "@/routes/Signin";
 import SignUpPage from "@/routes/Signup";
 import AppFrame from "@/layout/AppFrame";
 import { RecoilRoot } from "recoil";
+import * as SignUpContents from "./routes/Signup/contents/export";
 
 function App() {
   return (

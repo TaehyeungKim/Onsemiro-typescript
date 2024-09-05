@@ -49,6 +49,26 @@ export type SignUpSubmitData = {
   };
 };
 
+export type SignUpPreferenceData = {
+  [category in Exclude<
+    IdealCategory,
+    "age" | "height" | "location"
+  >]?: SignUpSubmitData[category];
+} & {
+  age?: {
+    age_min: number;
+    age_max: number;
+  };
+  height?: {
+    height_min: number;
+    height_max: number;
+  };
+  location?: {
+    city: SignUpClientStoreData["city"];
+    subRegion: SignUpClientStoreData["subRegion"];
+  };
+};
+
 export type SignUpClientStoreData = SignUpSubmitData & {
   verifyCode: string;
   phoneVerification: boolean;
@@ -56,9 +76,7 @@ export type SignUpClientStoreData = SignUpSubmitData & {
   city: CitySet["city"];
   subRegion: InferElementInArray<CitySet["sub"]>;
   preference: {
-    [type in keyof SignUpSubmitData["ideal_condition"]]: {
-      [category in IdealCategory]: SignUpSubmitData[category];
-    };
+    [type in keyof SignUpSubmitData["ideal_condition"]]: SignUpPreferenceData;
   };
 };
 

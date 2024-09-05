@@ -1,8 +1,17 @@
 import {
   CustomTextInputProps,
+  DoubleThumbRangeBarProps,
   RangeBarProps,
   SelectionRadioGridProps,
 } from "./type";
+import {
+  useState,
+  useRef,
+  useEffect,
+  useDeferredValue,
+  useCallback,
+  ChangeEvent,
+} from "react";
 
 export function CustomTextInput({
   id,
@@ -171,5 +180,92 @@ export function ExtendedRangeBar({
         <div className="h-full aspect-square invisible"></div>
       </div>
     </>
+  );
+}
+
+export function DoubleThumbRangeBar({
+  min,
+  max,
+  step,
+  captions,
+  defaultValue,
+  setter,
+}: DoubleThumbRangeBarProps) {
+  const [smaller, setSmaller] = useState<number>(defaultValue.min);
+  const [bigger, setBigger] = useState<number>(defaultValue.max);
+
+  const deferredBiggerValue = useDeferredValue<number>(bigger);
+  const deferredSmallerValue = useDeferredValue<number>(smaller);
+
+  const progress = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    setter.setBigger(bigger);
+    setter.setSmaller(smaller);
+  }, [smaller, bigger]);
+
+  const controlBiggerValue = useCallback(
+    (e: ChangeEvent<HTMLInputElement>) => {
+      if (!e || !e.target) return;
+
+      if (parseInt(e.target.value) <= smaller) {
+        setBigger(deferredBiggerValue);
+      } else setBigger(parseInt(e.target.value));
+    },
+    [smaller, deferredBiggerValue]
+  );
+  const controlSmallerValue = useCallback(
+    (e: ChangeEvent<HTMLInputElement>) => {
+      if (!e || !e.target) return;
+
+      if (parseInt(e.target.value) >= bigger) setSmaller(deferredSmallerValue);
+      else setSmaller(parseInt(e.target.value));
+    },
+    [bigger, deferredSmallerValue]
+  );
+
+  useEffect(() => {
+    const unitLength = 100 / ((max - min) / step);
+
+    progress.current?.setAttribute(
+      "style",
+      `left: ${((smaller - min) * unitLength) / step}%; right: ${
+        ((max - bigger) * unitLength) / step
+      }%`
+    );
+  }, [smaller, bigger]);
+
+  return (
+    <div className="flex h-3 items-center w-full relative">
+      <input
+        type="range"
+        min={min}
+        max={max}
+        step={step}
+        className={`w-full block absolute top-0 left-0 h-full z-10 pointer-events-none`}
+        value={smaller}
+        onChange={controlSmallerValue}
+      ></input>
+      <input
+        type="range"
+        min={min}
+        max={max}
+        step={step}
+        className={`w-full block absolute top-0 left-0 h-full z-10 pointer-events-none`}
+        value={bigger}
+        onChange={controlBiggerValue}
+      ></input>
+      <div className="w-full h-1 bg-white flex justify-between items-center absolute shadow-md">
+        <div ref={progress} className="absolute bg-main shadow-md h-1"></div>
+        {captions.map((c, i) => (
+          <div
+            key={i}
+            className="rounded-full aspect-square h-3 bg-white shadow-md flex justify-center"
+          >
+            <span className="block text-center translate-y-5 text-xs">{c}</span>
+          </div>
+        ))}
+      </div>
+    </div>
   );
 }

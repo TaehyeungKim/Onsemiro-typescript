@@ -28,3 +28,18 @@ export interface RangeBarProps extends React.ComponentPropsWithoutRef<"input"> {
   step: number;
   defaultValue: number;
 }
+
+export interface DoubleThumbRangeBarProps {
+  min: number;
+  max: number;
+  step: number;
+  captions: (string | number)[];
+  defaultValue: {
+    max: number;
+    min: number;
+  };
+  setter: {
+    setSmaller: (value: number) => void;
+    setBigger: (value: number) => void;
+  };
+}

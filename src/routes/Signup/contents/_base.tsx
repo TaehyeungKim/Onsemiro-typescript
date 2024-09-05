@@ -3,7 +3,7 @@ export function SignUpContentSection({
   className,
 }: React.ComponentPropsWithoutRef<"section">) {
   return (
-    <section className={`p-3 flex items-center ${className}`}>
+    <section className={`p-3 flex items-center ${className ?? ""}`}>
       <div className="w-full">{children}</div>
     </section>
   );

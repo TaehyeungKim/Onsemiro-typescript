@@ -1,4 +1,4 @@
-import { SignUpClientStoreData } from "./type";
+import { IdealCategory, SignUpClientStoreData } from "./type";
 
 export const executeOnDataFulfilled = (
   level: number,
@@ -52,6 +52,9 @@ export const executeOnDataFulfilled = (
     case 12:
       if (data.match_same_univ !== undefined) execute();
       break;
+    case 13:
+      execute();
+      break;
 
     // case 1:
     //   if (data.kakao_id) execute();
@@ -63,10 +66,6 @@ export const executeOnDataFulfilled = (
 
     // case 7:
     //   if (data.interest && data.interest.length > 0) execute();
-    //   break;
-
-    // case 13:
-    //   execute();
     //   break;
   }
 };
